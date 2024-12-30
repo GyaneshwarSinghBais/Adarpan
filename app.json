@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "Aushadhi Darpan",
+    "slug": "aushadhi-darpan",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "permissions": [
+        "ACCESS_WIFI_STATE"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.cgmsc.aushadhi_darpan"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "owner": "itcgmsc",
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "4d73077b-ad94-4773-b391-11b639ba07b3"
+      }
+    }
+  }
+}

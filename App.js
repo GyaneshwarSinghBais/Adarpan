@@ -1,0 +1,122 @@
+import React, { useEffect, useState } from 'react';
+//import { AppRegistry } from 'react-native';
+import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper';
+import { Provider } from 'react-redux';
+import { RootSiblingParent } from 'react-native-root-siblings';
+//import Test from './components/test';
+// import TodoList from './components/todoList';
+// import PostList from './components/postList';
+//import MyDrawer from './components/facilityHome';
+
+//import InsertPosts from './components/insertPosts';
+//import PutPosts from './components/putPosts';
+//import DeletePost from './components/deletePost';
+//import ProductList from './components/productList';
+//import WeatherTable from './components/weatherTable';
+//import StockTable from './components/stockTable';
+//import TableComponent from './components/tableComponent';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { MyDrawer } from './components/facilityHome';
+import LoginPage from './components/loginPage';
+import store from './components/app/store';
+import { Logout } from './components/logout';
+import PublicReports from './components/Public/PublicReports';
+import WarehouseWisePublicStock from './components/Public/WarehouseWisePublicStock';
+import StockVsIssuanceInWh from './components/Public/StockVsIssuanceInWh';
+import IssuanceToDistOrHospital from './components/Public/IssuanceToDistOrHospital';
+import IssuanceToFacilityOrHospital from './components/Public/IssuanceToFacilityOrHospital';
+
+// import * as Font from 'expo-font';
+// import { Ionicons } from '@expo/vector-icons';
+
+
+
+
+//import NavigationConfig from './NavigationConfig';
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#E6E6FA',
+    secondary: 'yellow',
+  },
+};
+
+const Stack = createStackNavigator();
+
+const App = () => {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  // const componentDidMount= async ()=> {
+  //   await Font.loadAsync({
+  //      Roboto: require('native-base/Fonts/Roboto.ttf'),
+  //      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+  //      ...Ionicons.font,
+  //   });
+  //   this.setState({ isReady: true });
+  // }
+
+  // useEffect(()=>{
+  //   componentDidMount();
+  // });
+
+
+ 
+
+  return (
+   
+  
+    <Provider store={store}>
+      <PaperProvider theme={theme} >
+      <RootSiblingParent>
+        <NavigationContainer>
+          {authenticated ?
+            (<MyDrawer />) : (
+              <Stack.Navigator >
+                <Stack.Screen name="Login" component={LoginPage} options={{ headerShown: false }} />
+                <Stack.Screen name="FacilityHome" component={MyDrawer} options={{ headerShown: false }} />
+                <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false }} />
+                <Stack.Screen name="Public Reports" component={PublicReports} options={{ headerShown: false }} />
+                <Stack.Screen name="Warehouse Wise Public Stock" component={WarehouseWisePublicStock} options={{ headerShown: false }} />
+                <Stack.Screen name="Items Stock vs Isssuance in Warehouse" component={StockVsIssuanceInWh} options={{ headerShown: false }} />
+                <Stack.Screen name="Issuance to District/Hospitals" component={IssuanceToDistOrHospital} options={{ headerShown: false }} />
+                <Stack.Screen name="Issuance to Facility" component={IssuanceToFacilityOrHospital} options={{ headerShown: false }} />
+              </Stack.Navigator>
+            )}
+        </NavigationContainer>
+        </RootSiblingParent>
+      </PaperProvider>
+    </Provider>
+
+   
+
+    // <View style={{ flex: 1, paddingTop: 50 }}>
+
+
+    // {/* <DeletePost /> */}
+    //   {/* <PutPosts /> */}
+    //   {/* <InsertPosts /> */}
+    //   {/* <PostList /> */}
+    //   {/* <TodoList /> */}
+    //   {/* <Test /> */}
+    //   {/* <ProductList /> */}
+    //   {/* <WeatherTable /> */}
+    //   {/* <StockTable /> */}
+    //   {/* <TableComponent /> */}
+    //   <Login />
+    //   {/* <NavigationConfig />  */}
+    //  {/* <FacilityHome/> */}
+
+    // </View>
+  );
+};
+
+
+// Optional: Register the main component (not usually necessary in Expo)
+//AppRegistry.registerComponent(appName, () => App);
+
+export default App;
+
+
